@@ -1,0 +1,5 @@
+ h2{
+    border: 2px solid red;
+    padding: 30px;
+    background:linear-gradient(to right, rgba(17, 17, 17, 0.755), #24a2b0d3);
+}
