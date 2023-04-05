@@ -422,6 +422,16 @@ section {
     border-radius: 50px;
   }
 
+  #register{
+    position: absolute;
+    left:12px;
+  }
+
+  #register:hover{
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
   .navbar .dropdown ul {
     display: block;
     position: absolute;
