@@ -38,6 +38,8 @@
             </div><!-- End Stats Item -->
           </div>
           
+          <div style="display: flex; flex-wrap: wrap;">
+            <div style="flex-basis: 100%;">
           <form action="#" method="get" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
             
             <!-- button to send data in map container -->
@@ -45,11 +47,15 @@
             <!-- input to send data in container accordind to search -->
             <input style="text-align: center;" type="text" class="form-control" placeholder="Enter Bus No.">
             <button type="submit" class="btn btn-primary">Search!</button>
-          </form>
+          </form></div>
 
           <!-- map container -->
-          <div id="map"></div>
-        </div>
+          <div id="map" style="flex-basis: 100%; min-height: 300px; border: 2px solid #fff; border-radius: 5px;"></div>
+        
+      </div>  
+      
+      </div>
+
 
         <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
           <img src="assets/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt="">
@@ -571,14 +577,18 @@
   </main><!-- End #main -->
 
   <script>
+        //  tt.setProductInfo("<your-product-name>", "<your-product-version>")
+      tt.map({
+        key: "SVEFjR5fzjf840paBjrKqGRMYDazDeNF",
+        container: "map",
+      });
 
     // function to loacte curremt position i.e. find the current coordinates and displaying it on map
     function locateMe() {
 
-
       // success function
         function success(position) {
-            const latitude = position.coords.latitude + 0.428151;   //some calculated constant values to make the map more accurate
+            const latitude  = position.coords.latitude  + 0.428151;   //some calculated constant values to make the map more accurate
             const longitude = position.coords.longitude + 0.044;
 
             //tt center takes longitude then latitude as the parameter passing instead of latitude then longitude
@@ -595,7 +605,7 @@
                 new tt.Marker().setLngLat(center).addTo(map)
             });
             
-            console.log(`Latitude: ${latitude} °, Longitude: ${longitude} °`);
+            // console.log(`Latitude: ${latitude} °, Longitude: ${longitude} °`);       //for debugging
         }
 
         // error function
