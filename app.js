@@ -13,11 +13,12 @@ ejs.delimiter = '?';
 
 // calling of pages based on the url
 app.get('/', (req, res) => {
-    res.render('index.ejs', {title: 'BusMe'});
+    res.render('index', {title: 'BusMe'});
 });
 
-app.get('/home', (req, res) => {
-    res.render('home', {title: 'Home-Page'});  
+app.get('/map', (req, res) => {
+    res.render('map', {title: 'maps'});
+    // res.render('home', {title: 'Home-Page'});  
 });
 
 app.get('/login', (req, res) => {

@@ -7,11 +7,13 @@
           <h2 data-aos="fade-up">Your Travel in Your Hands!</h2>
           <p data-aos="fade-up" data-aos-delay="100">Facere distinctio molestiae nisi fugit tenetur repellat non praesentium nesciunt optio quis sit odio nemo quisquam. eius quos reiciendis eum vel eum voluptatem eum maiores eaque id optio ullam occaecati odio est possimus vel reprehenderit</p>
 
-          <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-            <input type="text" class="form-control" placeholder="Enter Bus No.">
+          <form action="#" method="get" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+            <button type="button" onclick="locateMe();" class="btn btn-primary">Locate Me!</button>
+
+            <input style="text-align: center;" type="text" class="form-control" placeholder="Enter Bus No.">
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
-
+          
           <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
 
             <div class="col-lg-3 col-6">
@@ -30,7 +32,7 @@
 
             <div class="col-lg-3 col-6">
               <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="14553" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Users</p>
               </div>
             </div><!-- End Stats Item -->
@@ -41,8 +43,11 @@
                 <p>Workers</p>
               </div>
             </div><!-- End Stats Item -->
-
           </div>
+          
+          <!-- <button type="button" onclick="locateMe();" id="find-me" class="btn btn-primary">Locate Me!</button> -->
+          <!-- <button id="find-me" onclick="locateMe();" class="bg-blue-700">Locate Me</button><br /> -->
+          <div id="map" style = "z-index: 100000; background: #fff; border: 2px solid red; width: 60%; height: 400px; margin: 1% 0 0 17%;"></div>
         </div>
 
         <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
@@ -328,11 +333,13 @@
                 <li><i class="bi bi-check"></i> Nulla at volutpat diam uteera</li>
                 <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
                 <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
               </ul>
               <a href="#" class="buy-btn">Buy Now</a>
             </div>
           </div><!-- End Pricing Item -->
-
+          
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div class="pricing-item featured">
               <h3>Monthly Plan</h3>
@@ -343,6 +350,8 @@
                 <li><i class="bi bi-check"></i> Nulla at volutpat diam uteera</li>
                 <li><i class="bi bi-check"></i> Pharetra massa massa ultricies</li>
                 <li><i class="bi bi-check"></i> Massa ultricies mi quis hendrerit</li>
+                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
               </ul>
               <a href="#" class="buy-btn">Buy Now</a>
             </div>
@@ -358,6 +367,8 @@
                 <li><i class="bi bi-check"></i> Nulla at volutpat diam uteera</li>
                 <li><i class="bi bi-check"></i> Pharetra massa massa ultricies</li>
                 <li><i class="bi bi-check"></i> Massa ultricies mi quis hendrerit</li>
+                <li><i class="bi bi-check"></i> Massa ultrassas mi muis hendrerit</li>
+                <li><i class="bi bi-check"></i> Massa asdtricies mi qois hendrerit</li>
               </ul>
               <a href="#" class="buy-btn">Buy Now</a>
             </div>
@@ -557,3 +568,48 @@
     </section><!-- End Frequently Asked Questions Section -->
 
   </main><!-- End #main -->
+
+  <script>
+
+    // function to loacte curremt position i.e. find the current coordinates and displaying it on map
+    function locateMe() {
+
+
+      // success function
+        function success(position) {
+            const latitude = position.coords.latitude + 0.428151;   //some calculated constant values to make the map more accurate
+            const longitude = position.coords.longitude + 0.044;
+
+            //tt center takes longitude then latitude as the parameter passing instead of latitude then longitude
+            let center = [longitude, latitude];
+
+            var map = tt.map({
+                key: "SVEFjR5fzjf840paBjrKqGRMYDazDeNF",
+                container: "map",
+                center: center,
+                zoom: 10
+            });
+
+            map.on('load', () => {
+                new tt.Marker().setLngLat(center).addTo(map)
+            });
+            
+            console.log(`Latitude: ${latitude} °, Longitude: ${longitude} °`);
+        }
+
+        // error function
+        function error() {
+            status.textContent = 'Unable to retrieve your location';
+        }
+
+        // checking the navigator in browser and calling the methods
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(success, error);
+        } 
+        else {
+          status.textContent = 'Geolocation is not supported by your browser';
+        }
+
+    }
+
+</script>
