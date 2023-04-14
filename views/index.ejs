@@ -7,13 +7,6 @@
           <h2 data-aos="fade-up">Your Travel in Your Hands!</h2>
           <p data-aos="fade-up" data-aos-delay="100">Facere distinctio molestiae nisi fugit tenetur repellat non praesentium nesciunt optio quis sit odio nemo quisquam. eius quos reiciendis eum vel eum voluptatem eum maiores eaque id optio ullam occaecati odio est possimus vel reprehenderit</p>
 
-          <form action="#" method="get" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-            <button type="button" onclick="locateMe();" class="btn btn-primary">Locate Me!</button>
-
-            <input style="text-align: center;" type="text" class="form-control" placeholder="Enter Bus No.">
-            <button type="submit" class="btn btn-primary">Search</button>
-          </form>
-          
           <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
 
             <div class="col-lg-3 col-6">
@@ -45,9 +38,17 @@
             </div><!-- End Stats Item -->
           </div>
           
-          <!-- <button type="button" onclick="locateMe();" id="find-me" class="btn btn-primary">Locate Me!</button> -->
-          <!-- <button id="find-me" onclick="locateMe();" class="bg-blue-700">Locate Me</button><br /> -->
-          <div id="map" style = "z-index: 100000; background: #fff; border: 2px solid red; width: 60%; height: 400px; margin: 1% 0 0 17%;"></div>
+          <form action="#" method="get" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+            
+            <!-- button to send data in map container -->
+            <button type="button" onclick="locateMe();" style="padding-left: 5px; padding-right: 5px; min-width: 112px" class="btn btn-primary">Locate Me!</button>
+            <!-- input to send data in container accordind to search -->
+            <input style="text-align: center;" type="text" class="form-control" placeholder="Enter Bus No.">
+            <button type="submit" class="btn btn-primary">Search!</button>
+          </form>
+
+          <!-- map container -->
+          <div id="map"></div>
         </div>
 
         <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
