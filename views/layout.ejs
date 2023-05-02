@@ -70,7 +70,18 @@
           </li>
           <li><a href="/contact">Contact</a></li>
 
+          <? if(session.username){ 
+            console.log(session.username);
+            ?>
+            <li style="color: rgb(175, 165, 165);"> &nbsp;&nbsp; Hi! <?= session.username ?>!</li>
+            <a href="/logout"> <li type="button" class="btn btn-primary login" style="margin-left: 0px;">Logout</li> </a>
+          
+          <? }else { ?>
+
           <li type="button" class="btn btn-primary login" data-bs-toggle="modal" data-bs-target="#login">Login</li>
+          
+          <? } ?>
+          
           <li><a href="/driver" class="get-a-quote" href="get-a-quote.html">I am Driver</a></li>
 
         </ul>

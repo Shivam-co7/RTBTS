@@ -4,7 +4,7 @@ const ejs           = require('ejs');
 const expressLayout = require('express-ejs-layouts');
 const bodyParser    = require('body-parser');
 const sql           = require('mysql');
-const sessions      = require('express-session');
+const session      = require('express-session');
 const cookieParser  = require('cookie-parser');
 const app = express();
 
@@ -20,14 +20,17 @@ ejs.delimiter = '?';
 let oneDay = 24 * 60 * 60 * 1000;
 
 app.use(cookieParser());
-app.use(sessions({
+app.use(session({
     secret: "SomeSecretKey1212",
     saveUninitialized:true,
     cookie: { maxAge: oneDay },
     resave: false 
 }));
 
-
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+    next();
+  });
 
 // creating connection with database
 const conn = sql.createConnection({
@@ -42,30 +45,15 @@ app.get('/', (req, res) => {
     res.render('index', {title: 'BusMe'});
 });
 
-// app.get('/map', (req, res) => {
-//     res.render('map', {title: 'maps'});
-//     // res.render('home', {title: 'Home-Page'});  
-// });
-
-app.post('/login', (req, res) => {
-    const email    = req.body.email;
-    const password = req.body.password;
-    
-    // console.log("email= " + email + " password= " + password);      //for debugging
-
-    conn.query("SELECT * FROM users WHERE email = ? AND password = ?", [email, password], (err, result) => {
-        if(err){console.log("err!"); throw err;}
-
-        if(result.length > 0){
-            
-            res.redirect('/dashboard');
-        }
-        else{
-            res.redirect('/?failed_attempt!');
-        }
-    });
+// for searching any bus location details with bus number
+app.get('/search', (req, res) => {
+    let number = req.body.number;
+    res.render('map', {title: 'maps'});
+    // res.render('home', {title: 'Home-Page'});  
 });
 
+
+// for registering user
 app.post('/register', (req, res) => {
     const name     = req.body.name;
     const email    = req.body.email;
@@ -86,6 +74,35 @@ app.post('/register', (req, res) => {
     });
 });
 
+
+// for logging in user
+app.post('/login', (req, res) => {
+    const email    = req.body.email;
+    const password = req.body.password;
+    
+    // console.log("email= " + email + " password= " + password);      //for debugging
+
+    conn.query("SELECT * FROM users WHERE email = ? AND password = ?", [email, password], (err, result) => {
+        if(err){console.log("err!"); throw err;}
+
+        if(result.length > 0){
+            const userName = result[0].name;
+            req.session.username = userName;
+            res.redirect('/');
+        }
+        else{
+            res.redirect('/?failed_attempt!');
+        }
+    });
+});
+
+// for logging out user
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if(err) console.log(err);
+        else res.redirect('/');
+    });
+});
 
 
 //listening to the port and running the server on it
