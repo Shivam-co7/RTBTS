@@ -40,7 +40,7 @@
           
           <div style="display: flex; flex-wrap: wrap;">
             <div style="flex-basis: 100%;">
-          <form action="#" method="get" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+          <form action="/search" method="get" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
             
             <!-- button to send data in map container -->
             <button type="button" onclick="locateMe();" style="padding-left: 5px; padding-right: 5px; min-width: 112px" class="btn btn-primary">Locate Me!</button>
@@ -588,8 +588,8 @@
 
       // success function
         function success(position) {
-            const latitude  = position.coords.latitude  + 0.428151;   //some calculated constant values to make the map more accurate
-            const longitude = position.coords.longitude + 0.044;
+            const latitude  = position.coords.latitude;  //+ 0.428151;   //some calculated constant values to make the map more accurate
+            const longitude = position.coords.longitude;// + 0.044;
 
             //tt center takes longitude then latitude as the parameter passing instead of latitude then longitude
             let center = [longitude, latitude];
