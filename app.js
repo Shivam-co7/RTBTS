@@ -81,6 +81,7 @@ app.get('/driver', (req, res) => {
 app.get('/TandC', (req, res) => {
     res.render('TnC-Page', {title: 'T&C'});
 });
+
 // for Privacy-Policy page
 app.get('/privacyPolicy', (req, res) => {
     res.render('privacyPolicy-page', {title: 'Privacy-Policy'});

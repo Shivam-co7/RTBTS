@@ -1,0 +1,55 @@
+<!-- ======= Header ======= -->
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="/" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <h1 id="busme">BusMe</h1>
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li class="dropdown"><a href="#"><span>Extra Services</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="#">Packaging</a></li>
+              <li class="dropdown"><a href="#"><span>Transportation</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="#">Interstate Services</a></li>
+                  <li><a href="#">Intrastate Services</a></li>
+                  <li><a href="#">Over Seas Services</a></li>
+                </ul>
+              </li>
+              <li><a href="#">School Bus Tracking</a></li>
+              <li><a href="#">Shuttle Tracking</a></li>
+              <li><a href="#">Cards & Tickets</a></li>
+            </ul>
+          </li>
+          <li><a href="/contact">Contact</a></li>
+
+          <? if(session.username){ 
+            console.log(session.username);
+            ?>
+            <li style="color: rgb(175, 165, 165);"> &nbsp;&nbsp; Hi! <?= session.username ?>!</li>
+            <a href="/logout"> <li type="button" class="btn btn-primary login" style="margin-left: 0px;">Logout</li> </a>
+          
+          <? }else { ?>
+
+          <li type="button" class="btn btn-primary login" data-bs-toggle="modal" data-bs-target="#login">Login</li>
+          
+          <? } ?>
+          
+          <li><a href="/driver" class="get-a-quote">I am Driver</a></li>
+
+        </ul>
+      </nav>
+      <!-- End navbar -->
+
+    </div>
+  </header>
+  <!-- End Header -->

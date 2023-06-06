@@ -1,0 +1,92 @@
+  <!-- Login modal code starts -->
+  <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- heading starts -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- heading ends -->
+
+        <div class="modal-body">
+            <!-- login form starts -->
+          <form action="/login" method="post">
+
+            <!-- email section starts -->
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Email:</label>
+                <input type="email" name="email"  required class="form-control" id="recipient-name">
+            </div>
+            <!-- email section ends -->
+
+            <!-- password section starts -->
+            <div class="mb-3">
+                <label for="message-text" class="col-form-label">Password:</label>
+                <input type="password" name="password" required class="form-control" id="message-text"></input>
+            </div>
+            <!-- password section emds -->
+        </div>
+
+        <div class="modal-footer">
+            <a href="#" data-bs-toggle="modal" style="margin-right: 22%;" data-bs-target="#register">Don't have an account yet!</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </form>
+    <!-- login form ends -->
+      </div>
+    </div>
+  </div>
+<!-- Login modal code ends -->
+
+<!-- Register modal code starts -->
+<div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- heading starts -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <!-- heading ends -->
+
+      <div class="modal-body">
+          <!-- login form starts -->
+        <form action="/register" method="post">
+
+          <!-- name section starts -->
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" name="name"  required class="form-control" id="recipient-name">
+        </div>
+        <!-- name section ends -->
+
+          <!-- email section starts -->
+          <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Email:</label>
+              <input type="email" name="email"  required class="form-control" id="recipient-name">
+          </div>
+          <!-- email section ends -->
+
+          <!-- password section starts -->
+          <div class="mb-3">
+              <label for="message-text" class="col-form-label">Password:</label>
+              <input type="password" name="password" required class="form-control" id="message-text"></input>
+          </div>
+          <!-- password section emds -->
+      </div>
+
+      <div class="modal-footer">
+          <a href="#" id="register" data-bs-toggle="modal" data-bs-target="#login">Already have an account!</a>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+  </form>
+  <!-- login form ends -->
+    </div>
+  </div>
+</div>
+<!-- Register modal code ends -->
