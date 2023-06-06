@@ -405,7 +405,6 @@ section {
     padding: 2px 15px;
     margin-left: 30px;
     border-radius: 4px;
-    margin-left: 30px;
   }
 
   .login:hover {
@@ -427,7 +426,7 @@ section {
   }
 
   #map {
-    z-index: 9999999;
+    z-index: 100;
     width: 635px;
     height: 300px;
     border: 2px solid #fff;
@@ -567,16 +566,39 @@ section {
   .navbar .get-a-quote,
   .navbar .get-a-quote:focus {
     background: var(--color-primary);
-    padding: 8px 20px;
+    width: 112px;
+    padding: 4px 15px;
+    margin-top: 10px;
+    margin-left: 20px;
     border-radius: 4px;
-    margin: 15px;
+    background: #2756ff;
     color: #fff;
   }
 
   .navbar .get-a-quote:hover,
   .navbar .get-a-quote:focus:hover {
+    background: #181a1b73;
+    color: #2756ff;
+    font-weight: bold;
+    border: 3px solid #2756ff;
+    border-radius: 50px;
+  }
+
+  .login {
+    background: var(--color-primary);
+    background: #2756ff;
     color: #fff;
-    background: rgba(13, 66, 255, 0.8);
+    padding: 2px 15px;
+    margin-left: 20px;
+    border-radius: 4px;
+  }
+
+  .login:hover {
+    background: #181a1b73;
+    color: #2756ff;
+    font-weight: bold;
+    border: 3px solid #2756ff;
+    border-radius: 50px;
   }
 
   .navbar .dropdown ul,

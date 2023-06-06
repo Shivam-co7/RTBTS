@@ -40,9 +40,50 @@ const conn = sql.createConnection({
     database: 'RTBTS'
 });
 
-// calling of pages based on the url
+//for nav-bar links
+
+// for home-page
 app.get('/', (req, res) => {
     res.render('index', {title: 'BusMe'});
+});
+
+// for about-us page
+app.get('/about', (req, res) => {
+    res.render('about', {title: 'About'});
+});
+
+// for services page
+app.get('/services', (req, res) => {
+    res.render('services', {title: 'Services'});
+});
+
+// for pricing page
+app.get('/pricing', (req, res) => {
+    res.render('pricing', {title: 'Pricing'});
+});
+
+// for contact-us page
+app.get('/contact', (req, res) => {
+    res.render('contact', {title: 'Contact'});
+});
+
+// for service-details page
+app.get('/service-details', (req, res) => {
+    res.render('service-details', {title: 'Service Details'});
+});
+
+// for driver's page
+app.get('/driver', (req, res) => {
+    res.render('driver-page', {title: 'Driver'});
+});
+
+// for Terms & Conditions page
+app.get('/TandC', (req, res) => {
+    res.render('TnC-Page', {title: 'T&C'});
+});
+// for Privacy-Policy page
+app.get('/privacyPolicy', (req, res) => {
+    res.render('privacyPolicy-page', {title: 'Privacy-Policy'});
 });
 
 // for searching any bus location details with bus number
@@ -88,6 +129,7 @@ app.post('/login', (req, res) => {
         if(result.length > 0){
             const userName = result[0].name;
             req.session.username = userName;
+            // for redirecting to home as dashboard
             res.redirect('/');
         }
         else{
