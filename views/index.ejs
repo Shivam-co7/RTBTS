@@ -388,51 +388,5 @@
 
   </main><!-- End #main -->
 
-  <script>
-        //  tt.setProductInfo("<your-product-name>", "<your-product-version>")
-      tt.map({
-        key: "SVEFjR5fzjf840paBjrKqGRMYDazDeNF",
-        container: "map",
-      });
-
-    // function to loacte curremt position i.e. find the current coordinates and displaying it on map
-    function locateMe() {
-
-      // success function
-        function success(position) {
-            const latitude  = position.coords.latitude;  //+ 0.428151;   //some calculated constant values to make the map more accurate
-            const longitude = position.coords.longitude;// + 0.044;
-
-            //tt center takes longitude then latitude as the parameter passing instead of latitude then longitude
-            let center = [longitude, latitude];
-
-            var map = tt.map({
-                key: "SVEFjR5fzjf840paBjrKqGRMYDazDeNF",
-                container: "map",
-                center: center,
-                zoom: 10
-            });
-
-            map.on('load', () => {
-                new tt.Marker().setLngLat(center).addTo(map)
-            });
-            
-            // console.log(`Latitude: ${latitude} °, Longitude: ${longitude} °`);       //for debugging
-        }
-
-        // error function
-        function error() {
-            status.textContent = 'Unable to retrieve your location';
-        }
-
-        // checking the navigator in browser and calling the methods
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(success, error);
-        } 
-        else {
-          status.textContent = 'Geolocation is not supported by your browser';
-        }
-
-    }
-
-</script>
+  <!-- to incude MAPs Java-Script to the main file -->
+  <?- include('map-js.ejs') ?>

@@ -44,7 +44,7 @@ const conn = sql.createConnection({
 
 // for home-page
 app.get('/', (req, res) => {
-    res.render('index', {title: 'BusMe'});
+    res.render('index', {title: 'BusMe', apiKey: "SVEFjR5fzjf840paBjrKqGRMYDazDeNF"});
 });
 
 // for about-us page
