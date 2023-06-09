@@ -32,9 +32,9 @@
           </li>
           <li><a href="/contact">Contact</a></li>
 
-          <!-- <? if(session.username){ 
-            console.log(session.username);
-            ?> -->
+          <? if(session.username){ 
+            <!-- console.log(session.username); -->      
+            ?>
             <li style="color: rgb(175, 165, 165);"> &nbsp;&nbsp; Hi! <?= session.username ?>!</li>
             <a href="/logout"> <li type="button" class="btn btn-primary login" style="margin-left: 0px;">Logout</li> </a>
           

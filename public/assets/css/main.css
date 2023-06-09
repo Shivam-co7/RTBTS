@@ -601,6 +601,18 @@ section {
     border-radius: 50px;
   }
 
+  #busme {
+    color: #2756FF;
+    font-size: 40px;
+    font-family: inter,
+      sans-serif;
+    margin: 0 0 0 8px;
+  }
+
+  #busme:hover {
+    color: #fff;
+  }
+
   .navbar .dropdown ul,
   .navbar .dropdown .dropdown ul {
     position: static;
