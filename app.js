@@ -102,7 +102,7 @@ app.get('/search', (req, res) => {
 
     // console.log("number= ", num);                //for debugging
 
-    res.render('map-search-page', { title: 'Bus Route', number: num});
+    res.render('map-search-page', { title: 'Bus Route', num});
     // res.render('home', {title: 'Home-Page'});  
 });
 

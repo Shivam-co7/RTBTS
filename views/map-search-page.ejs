@@ -1,91 +1,519 @@
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/page-header.jpg');">
-        <div class="container position-relative">
-          <div class="row d-flex justify-content-center">
-            <div class="col-lg-6 text-center">
-              <h2>Your Searched <span id="busme" style="font-weight: 500; font-size: 56px;"> Bus's </span> Route is Here:</h2>
-              <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+<style>
+  #submit-button {
+    background: #df1b12;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.15s ease-in-out;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+  }
+
+  #submit-button:hover {
+    cursor: pointer;
+    background: #b1110e;
+  }
+
+  #labels-container {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 400px;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.45) 2px 2px 2px 0px;
+  }
+
+  #labels-container label {
+    line-height: 2;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  #labels-container #route-labels div {
+    border-left: 6px solid;
+    padding-left: 5px;
+    margin-top: 3px;
+  }
+
+  #route-labels div:hover {
+    cursor: pointer;
+    box-shadow: 0px 2px #888888;
+  }
+
+  #modal {
+  display: none;
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#modal-content {
+  background-color: lightgray;
+  color: #555;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%;
+}
+</style>
+
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs">
+  <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/page-header.jpg');">
+    <div class="container position-relative">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-6 text-center">
+          <h2>Your Searched <span id="busme" style="font-weight: 500; font-size: 56px;"> Bus's
+              <?= num ?>
+            </span> Route is Here:</h2>
+          <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a
+            odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <div class="container">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Bus Route</li>
+      </ol>
+    </div>
+  </nav>
+</div><!-- End Breadcrumbs -->
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+
+    <!-- Tom-Tom Maps -->
+    <div id="map" style="height: 500px; width: 100%;"> </div>
+
+    <div id="labels-container">
+      <label>Find the taxi that will arrive fastest</label>
+      <div id="route-labels"></div>
+      <input type="button" id="submit-button" value="Submit" />
+    </div>
+
+    <div id="modal">
+      <div id="modal-content"></div>
+    </div>
+    <!-- Tom-Tom Maps Ends -->
+
+
+    <div class="row gy-4 mt-4">
+
+      <div class="col-lg-4">
+
+        <div class="info-item d-flex">
+          <i class="bi bi-geo-alt flex-shrink-0"></i>
+          <div>
+            <h4>Location:</h4>
+            <p>A108 Adam Street, New York, NY 535022</p>
+          </div>
+        </div><!-- End Info Item -->
+
+        <div class="info-item d-flex">
+          <i class="bi bi-envelope flex-shrink-0"></i>
+          <div>
+            <h4>Email:</h4>
+            <p>info@example.com</p>
+          </div>
+        </div><!-- End Info Item -->
+
+        <div class="info-item d-flex">
+          <i class="bi bi-phone flex-shrink-0"></i>
+          <div>
+            <h4>Call:</h4>
+            <p>+1 5589 55488 55</p>
+          </div>
+        </div><!-- End Info Item -->
+
+      </div>
+
+      <div class="col-lg-8">
+        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
             </div>
           </div>
-        </div>
-      </div>
-      <nav>
-        <div class="container">
-          <ol>
-            <li><a href="/">Home</a></li>
-            <li>Bus Route</li>
-          </ol>
-        </div>
-      </nav>
-    </div><!-- End Breadcrumbs -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div>
-          <iframe style="border:0; width: 100%; height: 340px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7720.719603743665!2d77.281781!3d28.561857!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce310999b55d3%3A0xe9a6ed03ac96d2ca!2sJamia+Millia+Islamia!5e0!3m2!1sen!2sin!4v1622391790712" frameborder="0" allowfullscreen></iframe>
-        </div><!-- End Google Maps -->
-
-        <div class="row gy-4 mt-4">
-
-          <div class="col-lg-4">
-
-            <div class="info-item d-flex">
-              <i class="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex">
-              <i class="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h4>Email:</h4>
-                <p>info@example.com</p>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex">
-              <i class="bi bi-phone flex-shrink-0"></i>
-              <div>
-                <h4>Call:</h4>
-                <p>+1 5589 55488 55</p>
-              </div>
-            </div><!-- End Info Item -->
-
+          <div class="form-group mt-3">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
           </div>
+          <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+          </div>
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+          </div>
+          <div class="text-center"><button type="submit">Send Message</button></div>
+        </form>
+      </div><!-- End Contact Form -->
 
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div><!-- End Contact Form -->
+    </div>
 
-        </div>
+  </div>
+</section><!-- End Contact Section -->
 
-      </div>
-    </section><!-- End Contact Section -->
+</main><!-- End #main -->
 
-  </main><!-- End #main -->
+
+
+<script>
+  // var options = {
+  //   searchOptions: {
+  //     key: "SVEFjR5fzjf840paBjrKqGRMYDazDeNF",
+  //     language: "en-GB",
+  //     limit: 5,
+  //   },
+  //   autocompleteOptions: {
+  //     key: "SVEFjR5fzjf840paBjrKqGRMYDazDeNF",
+  //     language: "en-GB",
+  //   },
+  // }
+  // var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
+  // var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
+  // document.body.append(searchBoxHTML);
+
+  // var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
+  // var searchMarkersManager = new SearchMarkersManager(map)
+  // ttSearchBox.on("tomtom.searchbox.resultsfound", handleResultsFound)
+  // ttSearchBox.on("tomtom.searchbox.resultselected", handleResultSelection)
+  // ttSearchBox.on("tomtom.searchbox.resultfocused", handleResultSelection)
+  // ttSearchBox.on("tomtom.searchbox.resultscleared", handleResultClearing)
+  // map.addControl(ttSearchBox, "top-left")
+
+  let key = "SVEFjR5fzjf840paBjrKqGRMYDazDeNF";
+
+  const passengerInitCoordinates = [4.876935, 52.360306];
+  let passengerMarker;
+  
+  let routes = [];
+
+  const routeWeight = 9
+  const routeBackgroundWeight = 12
+
+  let taxiPassengerBatchCoordinates = [];
+
+  let bestRouteIndex;
+
+  const modal = document.getElementById("modal");
+  const modalContent = document.getElementById("modal-content");
+  const fastestRouteColor = "#65A7A9";
+
+  modal.addEventListener("click", function () {
+  modal.style.display = "none";
+})
+
+function displayModal() {
+  modalContent.innerText = "Dispatch car number " + String(bestRouteIndex + 1);
+  modal.style.display = "block";
+}
+
+function createPassengerMarker(markerCoordinates, popup) {
+  const passengerMarkerElement = document.createElement("div")
+  passengerMarkerElement.innerHTML =
+    "<img src='assets/img/man-waving-arm.png' style='width: 30px; height: 30px';>"
+  return new tt.Marker({ element: passengerMarkerElement })
+    .setLngLat(markerCoordinates)
+    .setPopup(popup)
+    .addTo(map)
+}
+
+  let map = tt.map({
+    key: key,
+    container: "map",
+    center: passengerInitCoordinates,
+    zoom: 12,
+  });
+
+  passengerMarker = createPassengerMarker(
+  passengerInitCoordinates,
+  new tt.Popup({ offset: 35 }).setHTML(
+    "Click anywhere on the map to change passenger location."
+  )
+);
+
+passengerMarker.togglePopup();
+
+function drawPassengerMarkerOnMap(geoResponse) {
+  if (
+    geoResponse &&
+    geoResponse.addresses &&
+    geoResponse.addresses[0].address.freeformAddress
+  ) {
+    passengerMarker.remove()
+    passengerMarker = createPassengerMarker(
+      geoResponse.addresses[0].position,
+      new tt.Popup({ offset: 35 }).setHTML(
+        geoResponse.addresses[0].address.freeformAddress
+      )
+    )
+    passengerMarker.togglePopup()
+  }
+}
+
+map.on("click", function (event) {
+  const position = event.lngLat
+  tt.services
+    .reverseGeocode({
+      key: apiKey,
+      position: position,
+    })
+    .then(function (results) {
+      drawPassengerMarkerOnMap(results)
+    })
+});
+
+  let taxiConfig;
+  function setDefaultTaxiConfig() {
+    taxiConfig = [
+      createTaxi("CAR #1", "#006967", [4.902642, 52.373627], "assets/img/bus.png"),
+      createTaxi("CAR #2", "#EC619F", [4.927198, 52.365927], "assets/img/bus.png"),
+      createTaxi("CAR #3", "#002C5E", [4.893488, 52.347878], "assets/img/bus.png"),
+      createTaxi("CAR #4", "#F9B023", [4.858433, 52.349447], "assets/img/bus.png"),
+    ]
+  }
+
+  function createTaxi(
+    name,
+    color,
+    coordinates,
+    iconFilePath,
+    iconWidth = 55,
+    iconHeight = 55
+  ) {
+    return {
+      name: name,
+      color: color,
+      icon:
+        "<img src=" +
+        iconFilePath +
+        " style='width: " +
+        iconWidth +
+        "px; height: " +
+        iconHeight +
+        "px;'>",
+      coordinates: coordinates,
+    }
+  }
+
+  setDefaultTaxiConfig()
+
+  taxiConfig.forEach(function (taxi) {
+    const carMarkerElement = document.createElement("div")
+    carMarkerElement.innerHTML = taxi.icon
+    new tt.Marker({ element: carMarkerElement, offset: [0, 27] })
+      .setLngLat(taxi.coordinates)
+      .addTo(map)
+  });
+
+  function clear() {
+  routes.forEach(function (child) {
+    map.removeLayer(child[0])
+    map.removeLayer(child[1])
+    map.removeSource(child[0])
+    map.removeSource(child[1])
+  })
+  routes = []
+  setDefaultTaxiConfig()
+  passengerMarker.togglePopup()
+}
+
+
+function updateTaxiBatchLocations(passengerCoordinates) {
+  taxiPassengerBatchCoordinates = []
+  taxiConfig.forEach((taxi) => {
+    taxiPassengerBatchCoordinates.push(
+      taxi.coordinates + ":" + passengerCoordinates
+    )
+  })
+}
+
+setDefaultTaxiConfig();
+updateTaxiBatchLocations(passengerInitCoordinates);
+
+function drawAllRoutes() {
+  tt.services
+    .calculateRoute({
+      batchMode: "sync",
+      key: apiKey,
+      batchItems: [
+        { locations: taxiPassengerBatchCoordinates[0] },
+        { locations: taxiPassengerBatchCoordinates[1] },
+        { locations: taxiPassengerBatchCoordinates[2] },
+        { locations: taxiPassengerBatchCoordinates[3] },
+      ],
+    })
+    .then(function (results) {
+      results.batchItems.forEach(function (singleRoute, index) {
+        const routeGeoJson = singleRoute.toGeoJson();
+        const route = [];
+        const route_background_layer_id = "route_background_" + index;
+        const route_layer_id = "route_" + index;
+
+        map
+          .addLayer(
+            buildStyle(
+              route_background_layer_id,
+              routeGeoJson,
+              "black",
+              routeBackgroundWeight
+            )
+          )
+          .addLayer(
+            buildStyle(
+              route_layer_id,
+              routeGeoJson,
+              taxiConfig[index].color,
+              routeWeight
+            )
+          )
+
+        route[0] = route_background_layer_id;
+        route[1] = route_layer_id;
+        routes[index] = route;
+
+        if (index === bestRouteIndex) {
+          const bounds = new tt.LngLatBounds();
+          routeGeoJson.features[0].geometry.coordinates.forEach(function (
+            point
+          ) {
+            bounds.extend(tt.LngLat.convert(point))
+          });
+          map.fitBounds(bounds, { padding: 150 });
+        }
+
+        map.on("mouseenter", route_layer_id, function () {
+          map.moveLayer(route_background_layer_id)
+          map.moveLayer(route_layer_id)
+        });
+
+        map.on("mouseleave", route_layer_id, function () {
+          bringBestRouteToFront()
+        })
+      })
+      bringBestRouteToFront()
+    });
+}
+
+function bringBestRouteToFront() {
+  map.moveLayer(routes[bestRouteIndex][0])
+  map.moveLayer(routes[bestRouteIndex][1])
+}
+
+function buildStyle(id, data, color, width) {
+  return {
+    id: id,
+    type: "line",
+    source: {
+      type: "geojson",
+      data: data,
+    },
+    paint: {
+      "line-color": color,
+      "line-width": width,
+    },
+    layout: {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+  }
+}
+
+function processMatrixResponse(result) {
+  const travelTimeInSecondsArray = [];
+  const lengthInMetersArray = [];
+  const trafficDelayInSecondsArray = [];
+  
+  result.matrix.forEach(function (child) {
+    travelTimeInSecondsArray.push(
+      child[0].response.routeSummary.travelTimeInSeconds
+    )
+
+    lengthInMetersArray.push(child[0].response.routeSummary.lengthInMeters)
+    trafficDelayInSecondsArray.push(
+      child[0].routeSummary.response.trafficDelayInSeconds
+    )
+  })
+
+  modifyFastestRouteColor(travelTimeInSecondsArray)
+  drawAllRoutes()
+  displayModal()
+}
+
+function convertToPoint(lat, long) {
+  return {
+    point: {
+      latitude: lat,
+      longitude: long,
+    },
+  }
+}
+
+function buildOriginsParameter() {
+  const origins = []
+  taxiConfig.forEach(function (taxi) {
+    origins.push(convertToPoint(taxi.coordinates[1], taxi.coordinates[0]))
+  })
+  return origins
+}
+
+function buildDestinationsParameter() {
+  return [
+    convertToPoint(
+      passengerMarker.getLngLat().lat,
+      passengerMarker.getLngLat().lng
+    ),
+  ]
+}
+
+function callMatrix() {
+  const origins = buildOriginsParameter()
+  const destinations = buildDestinationsParameter()
+  tt.services
+    .matrixRouting({
+      key: apiKey,
+      origins: origins,
+      destinations: destinations,
+      traffic: true,
+    })
+    .then(processMatrixResponse)
+}
+
+function submitButtonHandler() {
+  clear();
+  callMatrix();
+}
+
+function modifyFastestRouteColor(travelTimeInSecondsArray) {
+  const sortedTab = travelTimeInSecondsArray.slice()
+  sortedTab.sort(function (a, b) {
+    return a - b
+  })
+  bestRouteIndex = travelTimeInSecondsArray.indexOf(sortedTab[0])
+  taxiConfig[bestRouteIndex].color = fastestRouteColor
+}
+
+</script>
