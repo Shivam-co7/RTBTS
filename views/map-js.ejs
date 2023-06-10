@@ -2,6 +2,21 @@
 
   let apiKey = "SVEFjR5fzjf840paBjrKqGRMYDazDeNF";
 
+  // event listner to prevent the search if the input field is empty
+    document.getElementById('busSearch').addEventListener('submit', (event) => {
+      
+      let busNum = document.getElementById('busNumber'),
+          number = busNum.value;
+
+      if(number =='' || number == null){
+        
+        event.preventDefault();
+        
+        let alert1 = document.getElementById('searchAlert');
+        alert1.style.display='block';
+      }
+    });
+
   tt.map({
     key: apiKey,
     container: "map",
@@ -12,7 +27,7 @@
 
     // success function
     function success(position) {
-      const latitude = position.coords.latitude;  //+ 0.428151;   //some calculated constant values to make the map more accurate
+      const latitude  = position.coords.latitude;  //+ 0.428151;   //some calculated constant values to make the map more accurate
       const longitude = position.coords.longitude;// + 0.044;
 
       //tt center takes longitude then latitude as the parameter passing instead of latitude then longitude

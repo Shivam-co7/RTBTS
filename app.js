@@ -98,12 +98,11 @@ app.get('/privacyPolicy', (req, res) => {
 
 // for searching any bus location details with bus number
 app.get('/search', (req, res) => {
+    
     let num = req.query.number;
-
     // console.log("number= ", num);                //for debugging
 
     res.render('map-search-page', { title: 'Bus Route', num});
-    // res.render('home', {title: 'Home-Page'});  
 });
 
 
